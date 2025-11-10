@@ -30,6 +30,9 @@ public class Ship : MonoBehaviour
             }
 
             transform.Rotate(Vector3.forward, rotationAmount);
+
+            float angleInRadians = transform.eulerAngles.z * Mathf.Deg2Rad;
+            thrustDirection = new Vector2(Mathf.Cos(angleInRadians), Mathf.Sin(angleInRadians));
         }
     }
 
@@ -61,12 +64,12 @@ public class Ship : MonoBehaviour
         // Check vertical wrap
         if (transform.position.y > ScreenUtils.ScreenTop)
         {
-            newPosition.x = ScreenUtils.ScreenBottom;
+            newPosition.y = ScreenUtils.ScreenBottom;
         }
 
         else if (transform.position.y < ScreenUtils.ScreenBottom)
         {
-            newPosition.x = ScreenUtils.ScreenTop;
+            newPosition.y = ScreenUtils.ScreenTop;
         }
 
         transform.position = newPosition;
