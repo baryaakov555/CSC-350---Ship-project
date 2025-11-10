@@ -23,3 +23,5 @@ MemoryCaptures/
 .DS_Store
 .idea/
 .vscode/
+.vs/
+*.vsidx
