@@ -6,6 +6,7 @@ public class Ship : MonoBehaviour
     private Vector2 thrustDirection = new Vector2(1,0);
     private const float thrustForce = 5f;
     private float colliderRadius;
+    private const float rotateDegreesPerSecond = 90f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,7 +18,19 @@ public class Ship : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        float rotationInput = Input.GetAxis("Rotate");
+
+        if (rotationInput != 0)
+        {
+            float rotationAmount = rotateDegreesPerSecond * Time.deltaTime;
+
+            if (rotationInput < 0)
+            {
+                rotationAmount *= -1;
+            }
+
+            transform.Rotate(Vector3.forward, rotationAmount);
+        }
     }
 
     void FixedUpdate()
